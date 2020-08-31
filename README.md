@@ -2,13 +2,14 @@
 ### A google books downloader with proxy support.
 
 
-     .88888.            888888ba                    888888ba           
-    d8'   `88           88    `8b                   88    `8b          
-    88        .d8888b. a88aaaa8P' .d8888b. .d8888b. 88     88 .d8888b. 
-    88   YP88 88'  `88  88   `8b. 88'  `88 88'  `88 88     88 88'  `88 
-    Y8.   .88 88.  .88  88    .88 88.  .88 88.  .88 88    .8P 88.  .88 
-     `88888'  `88888P'  88888888P `88888P' `88888P' 8888888P  `88888P' 
-    ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+      .88888.            888888ba                    888888ba                      dP                     
+     d8'   `88           88    `8b                   88    `8b                     88                     
+     88        .d8888b. a88aaaa8P' .d8888b. .d8888b. 88     88 .d8888b.          d8888P .d8888b. 88d888b. 
+     88   YP88 88'  `88  88   `8b. 88'  `88 88'  `88 88     88 88'  `88 88888888   88   88'  `88 88'  `88 
+     Y8.   .88 88.  .88  88    .88 88.  .88 88.  .88 88    .8P 88.  .88            88   88.  .88 88       
+     `88888'  `88888P'  88888888P `88888P' `88888P' 8888888P  `88888P'            dP   `88888P' dP       
+     ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                                                                     
                                                                    
 
 
@@ -28,19 +29,18 @@ python GoBooDo.py --id=XUwOtdcIWdkC
 The configuration can be done in the settings.json and the description is as follows:
 ~~~
 {
-  "country":"co.in", // The TLD for the service that is being used for example books.google.co.in or books.google.de
-  "page_resolution": 1500, // The resoution of page in dpi.
+  "country":"co.in",                                                // The TLD for the service that is being used for example books.google.co.in or books.google.de
+  "page_resolution": 1500,                                          // The resoution of page in dpi.
   "tesseract_path": 'C:\program Files\Tesseract-OCR\tesseract.exe', // The path for tesseract engine if not available via environment variables.
-  "proxy_links":0,   // 0 for disabling proxy when fetching page links upon reaching the limit.
-  "proxy_images":0,  // 0 for disabling proxy when fetching  page images upon reaching the limit.
-  "max_retry_links":1, // Max retries for fetching a link using proxies.
-  "max_retry_images":1 // Max retries for a fetching a image using proxies.
-  "global_retry_time": // 0 for not running GoBooDo indefinitely, the number of seconds of delay between each global retry otherwise.
+  "proxy_links":0,                                                  // 0 for disabling proxy when fetching page links upon reaching the limit.
+  "proxy_images":0,                                                 // 0 for disabling proxy when fetching  page images upon reaching the limit.
+  "max_retry_links":1,                                              // Max retries for fetching a link using proxies.
+  "max_retry_images":1                                              // Max retries for a fetching a image using proxies.
+  "global_retry_time":                                              // 0 for not running GoBooDo indefinitely, the number of seconds of delay between each global retry otherwise.
 }
 ~~~
 
-The output will be saved as a folder named the 'id' of the book which was given as input. The final PDF will be in the output folder inside it along with a folder containing the images.
-Proxies may be added in proxies.txt (a sample proxy has been added already).
+The output will be saved as a folder,where the name of the folder is the book's id. Within the folder, a folder names images will contain all the images and a folder named output will contain the final output.
 
 GooBoDo now uses Tesseract for identifying empty images fetched from valid links. Please configure Tesseract prior to avoid any errors related to it. The path in settings is used for Windows installation. Please configure Tesseract for a linux distribution accordingly.
 
@@ -67,8 +67,8 @@ pytesseract
 
 # Features 
 1. Stateful : GoBooDo keeps a track of the books which are downloaded. In each subsequent iterations of operation only those those links and images are fetched which were not downloaded earlier.
-2. Proxy support : Since Google limits the amount of pages accessible to each individual majorly on the basis of IP address, GoBooDo uses proxies for circumventing that limit and maximizing the number of pages that can be accessed in the preview.
+2. Tor Support: It uses tor service to circumvent 
 
 # Todo
-1. Add proxy integration with a checker.
+1. Allow implmentation with linux
 2. Make the system more robust from being detected by google.
